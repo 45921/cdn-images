@@ -31,4 +31,4 @@ jobs:
       - name: Push source to Gitee
         run: |
           git remote add gitee git@gitee.com:shiroha/cdn-images.git
-          git push -u gitee main
+          git push -f gitee main
