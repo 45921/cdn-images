@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  sync:
     runs-on: ubuntu-18.04
 
     steps:
@@ -15,7 +15,7 @@ jobs:
         with:
           ref: main
 
-      - name: Push source to Gitee
+      - name: Prepare SSH and Git
         env:
           ACTION_DEPLOY_KEY: ${{ secrets.GITEE_SYNC_KEY }}
         run: |
@@ -27,5 +27,8 @@ jobs:
           ssh-keyscan gitee.com >> ~/.ssh/known_hosts
           git config --global user.email "Sync_with_gitee@shiraha.moe"
           git config --global user.name "Github Sync BOT"
+
+      - name: Push source to Gitee
+        run: |
           git remote add gitee git@gitee.com:shiroha/cdn-images.git
           git push -u gitee main
