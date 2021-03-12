@@ -30,6 +30,6 @@ jobs:
 
       - name: Push source to Gitee
         run: |
-          git fetch gitee
           git remote add gitee git@gitee.com:shiroha/cdn-images.git
+          git fetch gitee
           git push -f gitee main
